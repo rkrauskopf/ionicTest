@@ -1,0 +1,52 @@
+<ion-view>
+    <ion-pane>
+        <ion-header-bar>
+            <h1 class="title">Enter Data</h1>
+        </ion-header-bar>
+        <ion-content>
+            <form>
+                <div class="list">
+                    <div class="item item-divider">
+                        Address Details
+                    </div>
+                    <label class="item item-input">
+                        <input type="text" placeholder="Address" required/>
+                    </label>
+                    <label class="item item-input">
+                        <input type="text" placeholder="Country" required/>
+                    </label>
+                    <label class="item item-input">
+                        <input type="text" placeholder="State" required/>
+                    </label>
+                    <label class="item item-input">
+                        <input type="text" placeholder="ZIP code" required/>
+                    </label>
+                </div>
+                <ul class="list">
+                    <li class="item item-divider">
+                        Notification Settings
+                    </li>
+                    <li class="item item-toggle">
+                        Email
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                    <li class="item item-toggle">
+                        Phone
+                        <label class="toggle toggle-assertive">
+                            <input type="checkbox">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </ion-content>
+    </ion-pane>
+</ion-view>

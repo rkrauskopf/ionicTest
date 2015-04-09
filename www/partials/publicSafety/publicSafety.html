@@ -1,0 +1,32 @@
+<ion-view title="Public Safety">
+    <ion-pane>
+        <ion-header-bar class="bar-stable">
+            <h1 class="title">Public Safety</h1>
+        </ion-header-bar>
+        <ion-content>
+            <form>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Status
+                    </div>
+                    <select>
+                        <option>Deferred</option>
+                        <option>Ready</option>
+                        <option>Complete</option>
+                    </select>
+                </label>
+
+                <span class="item" ng-click="goToListType()">Device damaged ({{publicSafety.devicesDamaged.length}})</span>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Damage Description</span>
+                    <input type="text"/>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">GPS Location</span>
+                    <i class="icon ion-ios-location placeholder-icon"></i>
+                    <input type="text"/>
+                </label>
+            </form>
+        </ion-content>
+    </ion-pane>
+</ion-view>
