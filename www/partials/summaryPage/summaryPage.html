@@ -1,0 +1,41 @@
+<ion-view title="Summary Page">
+    <ion-pane>
+        <ion-header-bar class="bar-stable">
+            <h1 class="title">Summary Page</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ul class="list">
+                <li class="item item-toggle">
+                    Device Damaged
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+                <li class="item">
+                    GPS Location
+                </li>
+                <li class="item">
+                    Pictures of Damage
+                </li>
+                <li class="item item-toggle">
+                    Support Requested
+                    <label class="toggle toggle-assertive">
+                        <input type="checkbox">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+                <li class="item">
+                    <button class="button" ng-click="getMapTime()">
+                        Map Test
+                    </button>
+                    <a href="geo:32.7767000,-96.7970000">open map</a>
+                </li>
+            </ul>
+        </ion-content>
+    </ion-pane>
+</ion-view>

@@ -1,0 +1,14 @@
+<ion-view title="Order List">
+    <ion-pane>
+        <ion-header-bar class="bar-stable">
+            <h1 class="title">Job List</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ion-list>
+                <ion-item ng-repeat="order in orderList">
+                    {{order}}
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-pane>
+</ion-view>

@@ -5,26 +5,34 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
+
+    <!-- 3rd party libraries -->
+    <!-- google maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="partials/publicSafety/publicSafetyCtrl.js"></script>
     <script src="partials/listType/listTypeCtrl.js"></script>
     <script src="partials/formTest/formTestCtrl.js"></script>
+    <script src="partials/orderList/orderListCtrl.js"></script>
+    <script src="partials/summaryPage/summaryPageCtrl.js"></script>
+    <script src="partials/embeddedGoogleMapTest/embeddedGoogleMapTestCtrl.js"></script>
+    <script src="partials/googleMapPlugin/googleMapPluginCtrl.js"></script>
     <script src="js/services/deviceSvc.js"></script>
     <script src="js/services/publicSafetySvc.js"></script>
+
   </head>
   <body>
     <ion-nav-view>
