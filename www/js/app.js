@@ -5,18 +5,42 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'ngCordova'])
     .config(function($stateProvider, $urlRouterProvider){
-      $urlRouterProvider.otherwise('/googleMapPlugin')
+      $urlRouterProvider.otherwise('/app/embeddedGoogleMapTest')
 
-      $stateProvider.state('embeddedGoogleMapTest', {
-        url: '/embeddedGoogleMapTest',
-        templateUrl: 'partials/embeddedGoogleMapTest/embeddedGoogleMapTest.html',
-        controller: 'embeddedGoogleMapTestCtrl'
+      $stateProvider.state('app', {
+        url: '/app',
+        abstract: true,
+        templateUrl: 'partials/menu/menu.html',
+        controller: 'MenuCtrl'
       });
 
-      $stateProvider.state('googleMapPlugin', {
+      $stateProvider.state('app.embeddedGoogleMapTest', {
+        url: '/embeddedGoogleMapTest',
+        views: {
+          'menuContent': {
+            templateUrl: 'partials/embeddedGoogleMapTest/embeddedGoogleMapTest.html',
+            controller: 'embeddedGoogleMapTestCtrl'
+          }
+        }
+      });
+
+      $stateProvider.state('app.googleMapPlugin', {
         url: '/googleMapPlugin',
-        templateUrl: 'partials/googleMapPlugin/googleMapPlugin.html',
-        controller: 'googleMapPluginCtrl'
+        views: {
+          'menuContent': {
+            templateUrl: 'partials/googleMapPlugin/googleMapPlugin.html',
+            controller: 'googleMapPluginCtrl'
+          }
+        }
+      });
+
+      $stateProvider.state('app.externalMapLaunch', {
+        url: '/externalMapLaunch',
+        views: {
+          'menuContent': {
+            templateUrl: 'partials/externalMapLaunch/externalMapLaunch.html'
+          }
+        }
       });
 
       $stateProvider.state('summaryPage', {
@@ -58,7 +82,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
       });
 
     })
-    .run(function($ionicPlatform, $cordovaPush, $rootScope) {
+    .run(function($ionicPlatform, $rootScope) {
       $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -69,41 +93,6 @@ angular.module('starter', ['ionic', 'ngCordova'])
           StatusBar.styleDefault();
         }
 
-        //Configure an android device for push notifications
-        var androidConfig = {
-          "senderID": "595286717495"
-        };
-
-        $cordovaPush.register(androidConfig).then(function(result) {
-          // Success
-          console.log('Success = ' + result);
-        }, function(err) {
-          // Error
-          console.log('Error = ' + error);
-        });
-
-        $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
-          switch(notification.event) {
-            case 'registered':
-              if (notification.regid.length > 0 ) {
-                alert('registration ID = ' + notification.regid);
-              }
-              break;
-
-            case 'message':
-              // this is the actual push notification. its format depends on the data model from the push server
-              alert('message = ' + notification.message + ' msgCount = ' + notification.msgcnt);
-              break;
-
-            case 'error':
-              alert('GCM error = ' + notification.msg);
-              break;
-
-            default:
-              alert('An unknown GCM event has occurred');
-              break;
-          }
-        });
       });
     });
 
