@@ -20,20 +20,6 @@ angular.module('starter').controller('externalMapLaunchCtrl', ['$scope', 'mapDat
 
   };
 
-  $scope.buildURL = function (url, parameters) {
-
-    var qs = "";
-
-    for (var key in parameters) {
-      var value = parameters[key];
-      qs += encodeURIComponent(key) + "=" + encodeURIComponent(value) + "&";
-    }
-    if (qs.length > 0) {
-      qs = qs.substring(0, qs.length - 1); //chop off last "&"
-      url = url + "?" + qs;
-    }
-    return url;
-  };
 }]);
 
 angular.module('starter').factory('mapData', function () {
