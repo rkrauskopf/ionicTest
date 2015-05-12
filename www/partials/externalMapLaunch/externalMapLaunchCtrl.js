@@ -5,15 +5,18 @@ angular.module('starter').controller('externalMapLaunchCtrl', ['$scope', 'mapDat
 
     if (ionic.Platform.isIOS()) {
 
-      var newData = new mapData("apple", "Vancouver", "Toronto", "10");
+      var newData = mapData.build("apple", "Vancouver", "Toronto", "10");
       window.open(newData.generateQueryUrl());
 
     }
     else if (ionic.Platform.isAndroid()) {
 
-      var newData = new mapData("google", "Vancouver", "Toronto", "10");
+      var newData = mapData.build("google", "Vancouver", "Toronto", "10");
       window.open(newData.generateQueryUrl());
 
+    } else {
+
+      var newData = mapData.build("nothing", "Vancouver", "Toronto", "10");
     }
 
     return;
@@ -24,9 +27,12 @@ angular.module('starter').controller('externalMapLaunchCtrl', ['$scope', 'mapDat
 
 angular.module('starter').factory('mapData', function () {
 
+  // Available maps for mapData
   var possibleMapType = ['apple', 'google'];
+  // Static variable for the possibleMapType
   mapData.possibleMapType = angular.copy(possibleMapType);
 
+  // URL Scheme for generating the url for map
   var mapTypes = {
       apple: {
         url: "maps://maps.apple.com/",
@@ -44,6 +50,7 @@ angular.module('starter').factory('mapData', function () {
       }
     };
 
+  // Constructor
   function mapData(mapType, sourceAddress, desAddress, zoom) {
     this.mapType = mapType;
     this.sourceAddress = sourceAddress;
@@ -51,10 +58,12 @@ angular.module('starter').factory('mapData', function () {
     this.zoom = zoom;
   }
 
+  // Getting for the mapType
   mapData.prototype.getMapType = function () {
     return this.mapType;
   }
 
+  // Generate the url according to the data
   mapData.prototype.generateQueryUrl = function () {
 
     var outputUrl, location;
@@ -85,20 +94,22 @@ angular.module('starter').factory('mapData', function () {
     return outputUrl + qs;
   }
 
+  // Verify if the mapType is supported
   function checkMapType(mapType) {
     return possibleMapType.indexOf(mapType) !== -1;
   }
 
-  mapData.build = function (data) {
-    if (!checkMapType(data.mapType)) {
+  // Create the mapData with values
+  mapData.build = function (mapType, sourceAddress, desAddress, zoom) {
+    if (!checkMapType(mapType)) {
       return;
     }
 
     return new mapData(
-      data.mapType,
-      data.sourceAddress,
-      data.desAddress,
-      data.zoom
+      mapType,
+      sourceAddress,
+      desAddress,
+      zoom
     );
   };
 
