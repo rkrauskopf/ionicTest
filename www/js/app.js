@@ -4,8 +4,13 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'ngCordova'])
-    .config(function($stateProvider, $urlRouterProvider){
-      $urlRouterProvider.otherwise('/app/embeddedGoogleMapTest')
+    .config(function($stateProvider, $urlRouterProvider, $compileProvider){
+      $urlRouterProvider.otherwise('/app/embeddedGoogleMapTest');
+
+
+    var whitelist = 'http|https|file|ms-appx|ms-appx-web|ms-appdata|geo|maps';
+
+    $compileProvider.aHrefSanitizationWhitelist(whitelist);
 
       $stateProvider.state('app', {
         url: '/app',
@@ -38,7 +43,8 @@ angular.module('starter', ['ionic', 'ngCordova'])
         url: '/externalMapLaunch',
         views: {
           'menuContent': {
-            templateUrl: 'partials/externalMapLaunch/externalMapLaunch.html'
+            templateUrl: 'partials/externalMapLaunch/externalMapLaunch.html',
+            controller: 'externalMapLaunchCtrl'
           }
         }
       });

@@ -19,5 +19,14 @@
     "karma-requirejs": "^0.2.2",
     "requirejs": "^2.1.17",
     "shelljs": "^0.3.0"
-  }
+  },
+  "cordovaPlugins": [],
+  "cordovaPlatforms": [
+    "ios",
+    {
+      "platform": "android",
+      "locator": "browser"
+    },
+    "android"
+  ]
 }
