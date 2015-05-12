@@ -4,23 +4,17 @@ angular.module('starter').controller('externalMapLaunchCtrl', ['$scope', 'mapDat
   $scope.launchDeviceMap = function ($scope) {
 
     if (ionic.Platform.isIOS()) {
-
       var newData = mapData.build("apple", "Vancouver", "Toronto", "10");
       window.open(newData.generateQueryUrl());
-
     }
     else if (ionic.Platform.isAndroid()) {
-
       var newData = mapData.build("google", "Vancouver", "Toronto", "10");
       window.open(newData.generateQueryUrl());
-
-    } else {
-
+    }
+    //Windows or Browser platform
+    else {
       var newData = mapData.build("nothing", "Vancouver", "Toronto", "10");
     }
-
-    return;
-
   };
 
 }]);
@@ -61,7 +55,7 @@ angular.module('starter').factory('mapData', function () {
   // Getting for the mapType
   mapData.prototype.getMapType = function () {
     return this.mapType;
-  }
+  };
 
   // Generate the url according to the data
   mapData.prototype.generateQueryUrl = function () {
@@ -71,20 +65,18 @@ angular.module('starter').factory('mapData', function () {
 
     if (this.mapType) {
       outputUrl = mapTypes[this.mapType].url;
-    } else {
+    }
+    else {
       return;
     }
 
     if (this.sourceAddress && this.desAddress) {
       qs += mapTypes[this.mapType].from + "=" + encodeURIComponent(this.sourceAddress) + "&";
       qs += mapTypes[this.mapType].to + "=" + encodeURIComponent(this.desAddress) + "&";
-    } else if (this.sourceAddress || this.desAddress) {
-
-
+    }
+    else if (this.sourceAddress || this.desAddress) {
       location = this.sourceAddress ? this.sourceAddress : this.desAddress;
-
       qs += mapTypes[this.mapType].query + "=" + encodeURIComponent(location)  + "&";
-
     }
 
     if (this.zoom) {
@@ -92,7 +84,7 @@ angular.module('starter').factory('mapData', function () {
     }
 
     return outputUrl + qs;
-  }
+  };
 
   // Verify if the mapType is supported
   function checkMapType(mapType) {
@@ -115,4 +107,4 @@ angular.module('starter').factory('mapData', function () {
 
   return mapData;
 
-})
+});
